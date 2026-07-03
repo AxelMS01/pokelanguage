@@ -109,24 +109,41 @@ class Lexer:
 # ==========================================
 # 3. AST NODES
 # ==========================================
-class NumberNode: def __init__(self, token): self.token = token
-class StringNode: def __init__(self, token): self.token = token
-class BoolNode: def __init__(self, value): self.value = value
+class NumberNode: 
+    def __init__(self, token): self.token = token
+class StringNode: 
+    def __init__(self, token): self.token = token
+class BoolNode: 
+    def __init__(self, value): self.value = value
 class NullNode: pass
-class VarNode: def __init__(self, token): self.token = token
-class ArrayNode: def __init__(self, elements): self.elements = elements
-class ArrayAccessNode: def __init__(self, array_name, index): self.array_name = array_name; self.index = index
-class BinOpNode: def __init__(self, left, op, right): self.left, self.op, self.right = left, op, right
-class UnaryOpNode: def __init__(self, op, node): self.op, self.node = op, node
-class AssignNode: def __init__(self, name, value, is_const=False): self.name, self.value, self.is_const = name, value, is_const
-class PrintNode: def __init__(self, value): self.value = value
-class IfNode: def __init__(self, condition, true_block, false_block): self.condition, self.true_block, self.false_block = condition, true_block, false_block
-class WhileNode: def __init__(self, condition, block): self.condition, self.block = condition, block
-class ForNode: def __init__(self, init, condition, increment, block): self.init, self.condition, self.increment, self.block = init, condition, increment, block
-class BlockNode: def __init__(self, statements): self.statements = statements
-class FunctionNode: def __init__(self, name, params, body): self.name, self.params, self.body = name, params, body
-class ReturnNode: def __init__(self, value): self.value = value
-class CallNode: def __init__(self, name, args): self.name, self.args = name, args
+class VarNode: 
+    def __init__(self, token): self.token = token
+class ArrayNode: 
+    def __init__(self, elements): self.elements = elements
+class ArrayAccessNode: 
+    def __init__(self, array_name, index): self.array_name = array_name; self.index = index
+class BinOpNode: 
+    def __init__(self, left, op, right): self.left, self.op, self.right = left, op, right
+class UnaryOpNode: 
+    def __init__(self, op, node): self.op, self.node = op, node
+class AssignNode: 
+    def __init__(self, name, value, is_const=False): self.name, self.value, self.is_const = name, value, is_const
+class PrintNode: 
+    def __init__(self, value): self.value = value
+class IfNode: 
+    def __init__(self, condition, true_block, false_block): self.condition, self.true_block, self.false_block = condition, true_block, false_block
+class WhileNode: 
+    def __init__(self, condition, block): self.condition, self.block = condition, block
+class ForNode: 
+    def __init__(self, init, condition, increment, block): self.init, self.condition, self.increment, self.block = init, condition, increment, block
+class BlockNode: 
+    def __init__(self, statements): self.statements = statements
+class FunctionNode: 
+    def __init__(self, name, params, body): self.name, self.params, self.body = name, params, body
+class ReturnNode: 
+    def __init__(self, value): self.value = value
+class CallNode: 
+    def __init__(self, name, args): self.name, self.args = name, args
 
 # ==========================================
 # 4. PARSER
@@ -498,18 +515,27 @@ class Interpreter:
 if __name__ == '__main__':
     # This test code includes a DELIBERATE irregular expression at the end to test your logger!
     source_code = """
+        // RED Clean code test
         wild pikachu = 2;
         legendary level_cap = 15;
         wild pokemon_name = "Charmander";
         
-        pokeball (pikachu > level_cap) {
-            ultraball "higher level pkm";
+        pokeball (pikachu < level_cap) {
+            ultraball "Pokemon is weak.";
         }
         
-        // Testing an irregular expression (String + Number)
-        wild bad_math = pokemon_name + 5;
+        wild moves = ["Tackle", "Ember"];
+        cloneball (wild i = 0; i <= 1; i = i + 1) {
+            ultraball moves[i];
+        }
+        
+        catch heal(amount) {
+            repeatball pikachu + amount;
+        }
+        
+        wild new_hp = heal(5);
+        ultraball new_hp;
     """
-
     logger = SymbolTableLogger()
     lexer = Lexer(source_code)
     parser = Parser(lexer)

@@ -1,0 +1,19 @@
+==================================================
+   POKEMON LANGUAGE - SYMBOL TABLE & LOG
+==================================================
+
+--- TABLA DE SÍMBOLOS ---
+ID              | Type       | Scope      | Kind       | Value          
+----------------------------------------------------------------------
+pikachu         | Fire       | Local      | Wild       | 2              
+level_cap       | Fire       | Local      | Legendary  | 15             
+pokemon_name    | Grass      | Local      | Wild       | Charmander     
+moves           | Unknown    | Local      | Wild       | ['Tackle', 'Ember']
+i               | Fire       | Cloneball Scope | Wild       | 2              
+heal            | Function   | Local      | Catch      | Params: ['amount']
+new_hp          | Fire       | Local      | Wild       | 7              
+
+--- EXPRESIONES IRREGULARES / ERRORES ---
+(Ninguna - Código ejecutado perfectamente)
+
+==================================================
