@@ -438,6 +438,9 @@ class Interpreter:
     def exec_ReturnNode(self, node, env):
         val = self.evaluate(node.value, env)
         raise ReturnException(val)
+    
+    def exec_CallNode(self, node, env):
+        self.evaluate(node, env)
 
     def exec_ExpressionStatement(self, node, env):
         self.evaluate(node, env)
@@ -515,26 +518,26 @@ class Interpreter:
 if __name__ == '__main__':
     # This test code includes a DELIBERATE irregular expression at the end to test your logger!
     source_code = """
-        // RED Clean code test
-        wild pikachu = 2;
-        legendary level_cap = 15;
-        wild pokemon_name = "Charmander";
-        
-        pokeball (pikachu < level_cap) {
-            ultraball "Pokemon is weak.";
+        catch sumar(a, b){
+        a = a + b;
+        repeatball a;
         }
-        
-        wild moves = ["Tackle", "Ember"];
-        cloneball (wild i = 0; i <= 1; i = i + 1) {
-            ultraball moves[i];
+
+        catch imprimirSuma(a, b){
+        a = a + b;
+        ultraball a;
         }
-        
-        catch heal(amount) {
-            repeatball pikachu + amount;
-        }
-        
-        wild new_hp = heal(5);
-        ultraball new_hp;
+
+        wild numero1 = 5;
+        wild numero2 = 12;
+
+        ultraball sumar(numero1, numero2);
+
+        imprimirSuma(3, 4);
+
+
+        ultraball numero1;
+
     """
     logger = SymbolTableLogger()
     lexer = Lexer(source_code)
